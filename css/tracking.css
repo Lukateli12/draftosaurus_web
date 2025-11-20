@@ -1,0 +1,375 @@
+/* ============================
+    RESET DEL game.css
+================================== */
+main {
+    display: flex;
+    flex-direction: column; /* colocar resultado debajo */
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+
+
+.resultado-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 8px 6px 14px;
+    border-radius: 10px;
+}
+
+.resultado-container #resultado-ganador { width:100%; }
+
+.div-perfiles-rivales{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    margin: 6px 0;
+    padding: 6px 4px 6px; 
+    background-color: transparent;
+    flex-wrap: wrap; /* permitir varias filas si hay 5 jugadores */
+    width: 100%;
+}
+.perfil-rival, .boton-rival{
+    max-width: 90px;
+    max-height: 90px;
+    min-width: 56px;
+    min-height: 56px;
+    aspect-ratio: 1/1;
+    width: 72px;
+    height: 72px;
+    display: inline-flex; /* permitir columna centrada */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+/* pequeña separación inferior para evitar solapamientos en mobile */
+.perfil-rival { margin-bottom: 6px; }
+.nombre-rival{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* El contenedor del puntaje debe adaptarse al contenido (ancho automático) */
+.puntaje-rival{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.7);
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    width: auto;
+}
+
+/* Regla más específica para asegurar prioridad en tracking.html */
+.div-perfiles-rivales .puntaje-rival {
+    display: inline-flex !important;
+    width: auto !important;
+    padding: 2px 6px !important;
+}
+
+.nombre-rival { text-align:center; font-weight:700; color:#fff; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+
+.tabla-resultados td.td-nombre, .tabla-resultados td.td-puntos { text-align:center; }
+
+/* Estilo para la columna de posiciones */
+.tabla-resultados td.td-position { 
+    text-align: center; 
+    font-size: 24px; 
+    padding: 8px 6px;
+    vertical-align: middle;
+}
+.tabla-resultados thead .th-position { 
+    text-align: center; 
+    padding: 8px 6px; 
+    color: #fff; 
+    font-weight: 700;
+}
+
+/* ============================
+    CALCULADORA DE PUNTUACIÓN
+================================== */
+h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 8px; 
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.div-calculadora {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: rgba(76, 175, 80, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.parcela-item {
+    display: flex;
+    align-items: center;
+    background-color: rgba(46, 125, 50, 0.8);
+    border-radius: 8px;
+    padding: 8px 12px;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.parcela-item:hover {
+    background-color: rgba(46, 125, 50, 1);
+}
+
+
+.icono-parcela {
+    font-size: 20px;
+    width: 25px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.nombre-parcela {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    flex-grow: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn-decrementar, .btn-incrementar {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(46, 125, 50, 0.8);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2e7d32;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-decrementar:hover, .btn-incrementar:hover {
+    background-color: white;
+    transform: scale(1.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-decrementar:active, .btn-incrementar:active {
+    transform: scale(0.95);
+}
+
+.valor-parcela {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 15px;
+    border-radius: 15px;
+    min-width: 40px;
+    text-align: center;
+    border: 2px solid rgba(46, 125, 50, 0.8);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.checkbox-parcela {
+    width: 20px;
+    height: 20px;
+    accent-color: #4caf50;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.modal-ganador {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+.modal-contenido {
+    background-color: rgba(46,125,50,0.98);
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    padding: 18px;
+    border: 3px solid rgba(24, 94, 24, 0.9);
+}
+
+.modal-contenido h3, .modal-contenido p {
+    color: #fff;
+}
+.modal-contenido .button {
+    border-color: rgba(255,255,255,0.2);
+}
+
+#modal-config .modal-contenido {
+    max-width: 520px;
+}
+#modal-config label { color: #fff; font-weight:600; }
+#modal-config .input-nombre { display:block; }
+#modal-config .input-nombre input { border-radius:6px; border:1px solid rgba(0,0,0,0.2); }
+
+.resultado-container .button {
+    min-width: 140px;
+    padding: 10px 18px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    color: #fff;
+    border: 3px solid #388E3C;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    min-width: 140px;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    background-color: #4caf50;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.12);
+    transition: left 0.4s ease-in-out;
+    transform: skewX(-20deg);
+}
+
+.button:hover::before { left: 100%; }
+
+.button-play {
+    background: linear-gradient(90deg, #51b655, #328d35b7);
+    border-color: #19671cbb;
+}
+
+.button-manual {
+    background: linear-gradient(90deg, #2b622d, #123313b7);
+    border-color: #0d340ebb;
+}
+
+.button:active { transform: translateY(1px) scale(0.995); }
+
+.tabla-wrapper {
+    max-width: 520px;
+    margin: 8px auto 0;
+    background-color: rgba(76,175,80,0.95);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+.tabla-resultados {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+.tabla-resultados thead .th-jugador { text-align: left; padding-left: 12px; color: #fff; font-weight:700; }
+.tabla-resultados thead .th-puntos { text-align: right; padding-right: 12px; color: #fff; font-weight:700; }
+.tabla-resultados tbody tr.fila-resultado { background: transparent; }
+.tabla-resultados tbody tr.fila-ganador { background: transparent; }
+.tabla-resultados tbody td { background: rgba(46,125,50,0.85); }
+.tabla-resultados tbody tr.fila-ganador td { background: rgba(255,223,93,0.25); color: #111; font-weight:700; }
+.tabla-resultados td.td-nombre { padding: 12px; color: #fff; }
+.tabla-resultados td.td-puntos { padding: 12px; text-align: right; color: #fff; }
+.tabla-resultados tbody td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; padding-left: 16px; }
+.tabla-resultados tbody td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; padding-right: 16px; }
+.resultado-header { text-align:center; font-weight:700; margin-bottom:8px; color:#fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); }
+
+@media (max-width: 460px) {
+    .div-perfiles-rivales {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 10px;
+        padding: 5px 5px 0px;
+    }
+    .puntaje-rival-texto { font-size: 8px; padding: 0px 0px; }
+
+    .div-perfiles-rivales::-webkit-scrollbar { height: 8px; }
+
+    .perfil-rival, .boton-rival {
+        width: 50px;
+        height: 50px;
+        max-width: 50px;
+        max-height: 50px;
+    }
+
+    .div-calculadora { margin-top: 12px; }
+}
+@media (max-width: 375px) {
+    .div-perfiles-rivales {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 8px;
+        padding: 2px 2px 0px;
+    }
+    .div-perfiles-rivales::-webkit-scrollbar { height: 8px; }
+
+    .perfil-rival, .boton-rival {
+        width: 30px;
+        height: 30px;
+        max-width: 30px;
+        max-height: 30px;
+    }
+
+    .div-calculadora { margin-top: 12px; }
+}
+
+@media (max-width: 320px) {
+    .div-perfiles-rivales {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 6px;
+        padding: 4px 3px 0px;
+    }
+
+    .div-perfiles-rivales::-webkit-scrollbar { height: 8px; }
+
+    .perfil-rival, .boton-rival {
+        width: 26px;
+        height: 26px;
+        max-width: 26px;
+        max-height: 26px;
+    }
+    .tabla-wrapper, .tabla-resultados, .resultado-container #resultado-ganador {
+        max-width: 100%;
+        margin: 8px 4px 0;
+        padding: 8px;
+    }
+    .div-calculadora { margin-top: 12px; }
+}

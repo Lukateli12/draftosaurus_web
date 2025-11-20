@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Inicio de Sesión - Draftosaurus</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" type="image/png" href="assets/logoDraftosaurus.png">
+    </head>
+<body>
+    <!-- Selector de idioma en la esquina superior derecha -->
+    <div class="language-selector">
+        <select id="language-select">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+    <div class="login-container" id="login-container">
+        <img src="assets/logoDraftosaurus.png" alt="Logo del juego" class="logo" />
+        <h1 id="welcome-title">¡Bienvenido a Draftosaurus!</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Nombre de usuario" required />
+            <input type="password" id="password" placeholder="Contraseña" required />
+            <button type="submit" id="loginButton">Iniciar sesión</button>
+            <p id="loginMessage" class="message"></p>
+        </form>
+        <p><span id="no-account-text">¿No tienes cuenta?</span> <button type="button" class="link-button" onclick="toggleRegister()" id="register-link">Registrarse</button></p>
+        <button type="button" class="link-button" onclick="loginAsGuest()" id="guest-button">Soy Invitado</button>
+    </div>
+
+    <div class="login-container" id="register-container" style="display:none;">
+        <img src="assets/logoDraftosaurus.png" alt="Logo del juego" class="logo" />
+        <h1 id="register-title">Registro de Usuario</h1>
+        <form id="registerForm">
+            <input type="text" id="newUsername" placeholder="Nuevo nombre de usuario" required />
+            <input type="password" id="newPassword" placeholder="Nueva contraseña" required />
+            <input type="password" id="confirmNewPassword" placeholder="Confirmar contraseña" required />
+            <button type="submit" id="registerButton">Registrarse</button>
+            <p id="registerMessage" class="message"></p>
+        </form>
+        <p><span id="have-account-text">¿Ya tenes cuenta?</span> <button type="button" class="link-button" onclick="toggleRegister()" id="login-link">Iniciar sesión</button></p>
+    </div>
+
+    <footer class="main-footer">
+        <p id="footer-text">&copy; 2025 FaNaLuDi Software. Todos los derechos reservados.</p> <!-- &copy; se utiliza para el simbolo copyright -->
+    </footer>
+    <script src="scripts/profile.js"></script>
+    <script src="scripts/language.js"></script>
+    <script src="scripts/login.js"></script>
+    <script>
+        // Verificar que todo esté cargado correctamente
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado en index.html');
+            console.log('UserProfile disponible:', !!window.UserProfile);
+            console.log('LanguageSystem disponible:', !!window.LanguageSystem);
+            console.log('Todas las funciones de UserProfile:', window.UserProfile ? Object.keys(window.UserProfile) : 'UserProfile no existe');
+            
+            // Mostrar el estado actual del perfil
+            if (window.UserProfile) {
+                const currentUser = window.UserProfile.getUser();
+                console.log('Usuario actual en el perfil:', currentUser);
+            }
+        });
+    </script>
+</body>
+</html>
