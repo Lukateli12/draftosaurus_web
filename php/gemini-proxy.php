@@ -6,7 +6,7 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // API Key de Gemini
-$apiKey = 'AIzaSyCvSs7uPvSLJWH9RGZr7Z5w9w4I_Fzj1uc';
+$apiKey = '';
 
 // Endpoint de Gemini
 $apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' . $apiKey;
@@ -66,4 +66,5 @@ if ($response === FALSE) {
 // Devuelve la respuesta tal cual
 
 echo $response;
+
 
